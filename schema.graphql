@@ -39,7 +39,7 @@ type Token @entity {
   symbol: String!
 
   " The number of decimal places this token uses, default to 18 "
-  decimals: Int!
+  decimals: BigInt!
 
   " Optional field to track the price of a token, mostly for caching purposes "
   lastPriceUSD: BigDecimal!
@@ -606,5 +606,11 @@ type Account @entity {
 # Helper entity for calculating daily/hourly active users
 type ActiveAccount @entity {
   " { daily/hourly }-{ Address of the account }-{ Days/hours since Unix epoch } "
+  id: ID!
+}
+
+# Helper entity for calculating daily active users
+type DailyActiveAccount @entity {
+  " { Days since Unix epoch }-{ Address of the account } "
   id: ID!
 }

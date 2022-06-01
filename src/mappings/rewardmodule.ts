@@ -7,11 +7,11 @@ import {
   GysrSpent,
   RewardsDistributed,
   RewardsExpired
-} from '../../generated/templates/ERC20BaseRewardModule/ERC20BaseRewardModule'
-import { Vault, Token, YieldAggregator  } from '../../generated/schema'
+} from '../generated/templates/ERC20BaseRewardModule/ERC20BaseRewardModule'
+import { Vault, Token, YieldAggregator  } from '../generated/schema'
 import { integerToDecimal } from '../common/getters'
-import { ZERO_BIG_INT, ZERO_BIG_DECIMAL, ZERO_ADDRESS, GYSR_TOKEN, PRICING_MIN_TVL } from '../util/constants'
-import { getPrice, createNewToken } from '../pricing/token'
+import { ZERO_BIG_INT, ZERO_BIG_DECIMAL, ZERO_ADDRESS, GYSR_TOKEN, PRICING_MIN_TVL} from '../utils/contracts'
+// import { getPrice, createNewToken } from '../pricing/token'
 import { updatePool } from '../utils/pool'
 import { updatePoolDayData, updatePlatform } from '../common/initializer'
 
@@ -20,13 +20,17 @@ export function handleRewardsFunded(event: RewardsFunded): void {
   let contract = ERC20BaseRewardModuleContract.bind(event.address);
 
   let vault = Vault.load(contract.owner().toHexString())!;
+  if (vault == null) {
+    vault = new Vault(contract.owner().toHexString());
+  }
   let stakingToken = Token.load(vault.inputToken)!;
   let rewardToken = Token.load(vault.outputToken!)!;
   let platform = YieldAggregator.load(ZERO_ADDRESS)!;
+  vault.protocol = platform.id;
 
   let amount = integerToDecimal(event.params.amount, new BigInt(rewardToken.decimals))
-  pool.rewards = pool.rewards.plus(amount);
-  pool.funded = pool.funded.plus(amount);
+  vault.rewards = vault.rewards.plus(amount);
+  vault.funded = vault.funded.plus(amount);
 
   // update timeframe for pool
   if (event.params.timestamp.lt(pool.start) || pool.start.equals(ZERO_BIG_INT)) {
@@ -62,7 +66,7 @@ export function handleRewardsFunded(event: RewardsFunded): void {
   pool.fundings = pool.fundings.concat([funding.id])
 
   // update pool pricing
-  updatePool(pool, platform, stakingToken, rewardToken, event.block.timestamp);
+  updatePool(vault, platform, stakingToken, rewardToken, event.block.timestamp);
 
   // update platform
   if (pool.tvl.gt(PRICING_MIN_TVL) && !platform._activePools.includes(pool.id)) {

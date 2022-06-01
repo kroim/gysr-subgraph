@@ -2,7 +2,7 @@ import {
     Token,
     Vault as VaultStore,
     Deposit as DepositTransaction,
-  } from "../../generated/schema";
+  } from "../generated/schema";
   import {
     log,
     BigInt,
@@ -19,7 +19,7 @@ import {
   import { getUsdPricePerToken } from "../Prices";
   import { getPriceOfOutputTokens } from "./Price";
   import * as constants from "../common/constants";
-  import { Pool as VaultContract } from "../../generated/PoolFactory/Pool";
+  import { Pool as VaultContract } from "../generated/PoolFactory/Pool";
   import {BIGINT_ZERO} from '../common/constants';
   
   export function createDepositTransaction(

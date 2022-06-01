@@ -5,10 +5,10 @@ import {
   Staked,
   Unstaked,
   Claimed
-} from '../../generated/templates/ERC20StakingModule/ERC20StakingModule'
-import { ERC20CompetitiveRewardModule as ERC20CompetitiveRewardModuleContract } from '../../generated/templates/ERC20StakingModule/ERC20CompetitiveRewardModule'
-import { ERC20FriendlyRewardModule as ERC20FriendlyRewardModuleContract } from '../../generated/templates/ERC20StakingModule/ERC20FriendlyRewardModule'
-import { Vault, Token, RewardToken, Account, YieldAggregator, Deposit, Withdraw } from '../../generated/schema'
+} from '../generated/templates/ERC20StakingModule/ERC20StakingModule'
+import { ERC20CompetitiveRewardModule as ERC20CompetitiveRewardModuleContract } from '../generated/templates/ERC20StakingModule/ERC20CompetitiveRewardModule'
+import { ERC20FriendlyRewardModule as ERC20FriendlyRewardModuleContract } from '../generated/templates/ERC20StakingModule/ERC20FriendlyRewardModule'
+import { Vault, Token, RewardToken, Account, YieldAggregator, Deposit, Withdraw } from '../generated/schema'
 import { getOrCreateAccount, updatePoolDayData } from '../common/initializer'
 import {getOrCreateProtocol} from '../common/protocol'
 import { BIGINT_ZERO,BIGDECIMAL_ZERO, ZERO_ADDRESS, INT_ONE } from '../common/constants'
@@ -290,7 +290,7 @@ export function handleClaimed(event: Claimed): void {
   //let stakes = platform.stakes;
 
   // note: should encapsulate this behind an interface when we have additional module types
-  //let poolContract = PoolContract.bind(Address.fromString(vault.id));
+  // let poolContract = PoolContract.bind(Address.fromString(vault.id));
 
   
   

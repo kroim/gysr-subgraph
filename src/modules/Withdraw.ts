@@ -2,7 +2,7 @@ import {
     Token,
     Vault as VaultStore,
     Withdraw as WithdrawTransaction,
-  } from "../../generated/schema";
+  } from "../generated/schema";
   import {
     log,
     BigInt,
@@ -20,7 +20,7 @@ import {
   import { getUsdPricePerToken } from "../Prices";
   import * as constants from "../common/constants";
   import { getPriceOfOutputTokens } from "./Price";
-  import { Pool as VaultContract } from "../../generated/PoolFactory/Pool";
+  import { Pool as VaultContract } from "../generated/PoolFactory/Pool";
   
   export function createWithdrawTransaction(
     to: Address,

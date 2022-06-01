@@ -8,7 +8,7 @@ import {
   import * as constants from "../common/constants";
   import { Pool as Vault} from "../../generated/templates/Pool/Pool";
   import { getPriceUsdcRecommended } from "../Prices/routers/CurveRouter";
-import { Token } from "../../generated/schema";
+import { Token } from "../generated/schema";
   
   export function getPriceOfOutputTokens(
     vaultAddress: Address,
