@@ -2,8 +2,7 @@
 import { GeyserCreated } from '../generated/GeyserFactoryV1/GeyserFactoryV1'
 import { GeyserV1 as GeyserContractV1 } from '../generated/GeyserFactoryV1/GeyserV1'
 import { GeyserV1 as GeyserTemplateV1 } from '../generated/templates'
-// import { Pool as VaultContract } from "../generated/PoolFactory/Pool";
-import { YieldAggregator, Vault as VaultStore } from "../generated/schema";
+import { Vault as VaultStore } from "../generated/schema";
 import { BIGINT_ZERO, BIGDECIMAL_ZERO, PROTOCOL_ID } from '../common/constants'
 import { getOrCreateToken, getOrCreateRewardToken } from '../common/getters'
 import {getOrCreateProtocol} from '../common/protocol'

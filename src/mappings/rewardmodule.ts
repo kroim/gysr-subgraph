@@ -26,7 +26,7 @@ export function handleRewardsFunded(event: RewardsFunded): void {
     vault = new Vault(contract.owner().toHexString());
   }
   let stakingToken = Token.load(vault.inputToken)!;
-  let rewardToken = Token.load(vault.outputToken!)!;
+  let rewardToken = Token.load(vault.outputToken)!;
   let platform = YieldAggregator.load(ZERO_ADDRESS)!;
   let amount = integerToDecimal(event.params.amount, stakingToken.decimals)
 
@@ -60,7 +60,7 @@ export function handleGysrSpent(event: GysrSpent): void {
     vault = new Vault(contract.owner().toHexString());
   }
   let stakingToken = Token.load(vault.inputToken)!;
-  let rewardToken = Token.load(vault.outputToken!)!;
+  let rewardToken = Token.load(vault.outputToken)!;
   let platform = YieldAggregator.load(ZERO_ADDRESS)!;
   let amount = integerToDecimal(event.params.amount, rewardToken.decimals)
 

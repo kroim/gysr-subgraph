@@ -23,7 +23,7 @@ export function handleStaked(event: Staked): void {
     vault = new Vault(contract.owner().toHexString());
   }
   let stakingToken = Token.load(vault.inputToken)!;
-  let rewardToken = Token.load(vault.outputToken!)!;
+  let rewardToken = Token.load(vault.outputToken)!;
   let platform = YieldAggregator.load(ZERO_ADDRESS)!;
   let amount = integerToDecimal(event.params.amount, stakingToken.decimals)
 
@@ -55,7 +55,7 @@ export function handleUnstaked(event: Unstaked): void {
     vault = new Vault(contract.owner().toHexString());
   }
   let stakingToken = Token.load(vault.inputToken)!;
-  let rewardToken = Token.load(vault.outputToken!)!;
+  let rewardToken = Token.load(vault.outputToken)!;
   let platform = YieldAggregator.load(ZERO_ADDRESS)!;
   let amount = integerToDecimal(event.params.amount, rewardToken.decimals)
 
@@ -84,7 +84,7 @@ export function handleClaimed(event: Claimed): void {
   let contract = ERC20StakingModuleContract.bind(event.address);
   let vault = Vault.load(contract.owner().toHexString())!;
   let stakingToken = Token.load(vault.inputToken)!;
-  let rewardToken = Token.load(vault.outputToken!)!;
+  let rewardToken = Token.load(vault.outputToken)!;
   let platform = YieldAggregator.load(ZERO_ADDRESS)!;
 
 
