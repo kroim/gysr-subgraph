@@ -80,7 +80,7 @@ import {
     let inputTokenAddress = Address.fromString(vault.inputToken);
     let inputTokenPrice = getUsdPricePerToken(inputTokenAddress);
     let inputTokenDecimals = constants.BIGINT_TEN.pow(
-      inputToken!.decimals as u8
+      inputToken?.decimals as u8
     ).toBigDecimal();
   
     let depositAmountUSD = depositAmount

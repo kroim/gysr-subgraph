@@ -4,10 +4,8 @@
   "scripts": {
     "codegen": "graph codegen --output-dir src/generated/",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ gysr",
-    "create-local": "graph create --node http://localhost:8020/ gysr",
-    "remove-local": "graph remove --node http://localhost:8020/ gysr",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 gysr"
+    "auth": "graph auth https://api.thegraph.com/deploy/ dea9e8cc9c504a4d958321fd248aeafa",
+    "deploy": "graph deploy jorgelsc85/gysr-subgraph1 --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ --debug"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.29.2",
