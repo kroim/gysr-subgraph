@@ -19,9 +19,9 @@ export function handleStaked(event: Staked): void {
   // load pool and tokens
   let contract = ERC20StakingModuleContract.bind(event.address);
   let vault = Vault.load(contract.owner().toHexString())!;
-  if (vault == null) {
-    vault = new Vault(contract.owner().toHexString());
-  }
+  // if (vault == null) {
+  //   vault = new Vault(contract.owner().toHexString());
+  // }
   let stakingToken = Token.load(vault.inputToken)!;
   let rewardToken = Token.load(vault.outputToken)!;
   let platform = YieldAggregator.load(ZERO_ADDRESS)!;
@@ -51,9 +51,9 @@ export function handleUnstaked(event: Unstaked): void {
   // load pool and token
   let contract = ERC20StakingModuleContract.bind(event.address);
   let vault = Vault.load(contract.owner().toHexString())!;
-  if (vault == null) {
-    vault = new Vault(contract.owner().toHexString());
-  }
+  // if (vault == null) {
+  //   vault = new Vault(contract.owner().toHexString());
+  // }
   let stakingToken = Token.load(vault.inputToken)!;
   let rewardToken = Token.load(vault.outputToken)!;
   let platform = YieldAggregator.load(ZERO_ADDRESS)!;

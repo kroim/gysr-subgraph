@@ -39,6 +39,16 @@ export function handleGeyserCreated(event: GeyserCreated): void {
   vault.totalValueLockedUSD = BIGDECIMAL_ZERO;
   vault.createdBlockNumber = event.block.number;
   vault.createdTimestamp = event.block.timestamp;
+  // kroim
+  vault.depositLimit = BIGINT_ZERO;
+  vault.outputTokenPriceUSD = BIGDECIMAL_ZERO;
+  vault.pricePerShare = BIGDECIMAL_ZERO;
+  vault.stakedOutputTokenAmount = BIGINT_ZERO;
+  vault.rewardTokenEmissionsAmount = [BIGINT_ZERO, BIGINT_ZERO];
+  vault.rewardTokenEmissionsUSD = [BIGDECIMAL_ZERO, BIGDECIMAL_ZERO];
+  // vault.fees = createPoolFees(poolAddress.toHexString());
+  vault.createdTimestamp = event.block.timestamp;
+  vault.createdBlockNumber = event.block.number;
   // reward token
   vault.rewardTokens = [rewardToken.id];
   vault.fees = [];
